@@ -11,7 +11,7 @@ const Register = ({ values, errors, touched, status, ...props}) => {
 
     useEffect(() => {
         status && setPlayer(player => [...player, status]);
-}, []);
+}, [status]);
    
         return (
              <div className="base-container">
@@ -28,15 +28,11 @@ const Register = ({ values, errors, touched, status, ...props}) => {
                 />
                 {touched.username && errors.username && (<p className="errors">{errors.username}</p>)} 
                  <Field className="form-group field password" 
-               type="password" name="password1" placeholder="enter your password"
+               type="password" name="password" placeholder="enter your password"
                 />
                 <p className="text">*Password must be at least 6 characters.</p>
                 {touched.password && errors.password && (<p className="errors">{errors.password}</p>)} 
-                <Field className="form-group field password" 
-               type="password" name="password2" placeholder="enter your password"
-                />
-                <p className="text">*Password must be at least 6 characters.</p>
-                {touched.password && errors.password && (<p className="errors">{errors.password}</p>)} 
+                
             
             <div className="footer">
             <button type="submit" className="btn">Register</button>
@@ -49,12 +45,11 @@ const Register = ({ values, errors, touched, status, ...props}) => {
         );
 };
 const FormikRegistration = withFormik({
-    mapPropsToValues({ username,  password1, password2}) {
+    mapPropsToValues({ username,  password, passwordVerify, name}) {
         return{
            
             username: username || "",
-            password1: password1 || "",
-            password2: password2 || ""
+            password: password || ""
         };
     },
 
@@ -62,12 +57,7 @@ const FormikRegistration = withFormik({
         username: yup
             .string()
             .required("Username is required"),
-        password1: yup
-            .string()
-            .required("Password is required")
-            .min(6, "Password must be at least 6 characters.")
-            .max(20, "Password must not exceed 20 characters."),
-        password2: yup
+        password: yup
             .string()
             .required("Password is required")
             .min(6, "Password must be at least 6 characters.")
@@ -75,20 +65,13 @@ const FormikRegistration = withFormik({
     }),
 
     handleSubmit(values, { props }) {
-        const params = {
-            username: values.username,
-            password1: values.password1,
-            password2: values.password2,
-          };
-
         axios
-            .post("https://lambda-mud-test.herokuapp.com/api/registration/", params)
-            .then(res => {
-                localStorage.setItem('token', res.data.token)
+            .post("https://mud-game2.herokuapp.com/api/registration", values)
+            .then(
                 props.history.push(
                     "/login"
                 )
-                })
+            )
             .catch(err => console.log(err.response));
     }
 })(Register);   
