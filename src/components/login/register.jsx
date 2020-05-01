@@ -95,4 +95,4 @@ const FormikRegistration = withFormik({
         
 
 
-export default FormikRegistration   
+export default FormikRegistration  
