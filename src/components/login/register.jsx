@@ -82,7 +82,8 @@ const FormikRegistration = withFormik({
           };
 
         axios
-            .post("https://lambda-mud-test.herokuapp.com/api/registration/", params)
+            .post("https://mud-game2.herokuapp.com/api/registration/", params)
+            // .post("https://lambda-mud-test.herokuapp.com/api/registration/", params)
             .then(res => {
                 localStorage.setItem('token', res.data.token)
                 props.history.push(

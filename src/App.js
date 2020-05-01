@@ -65,6 +65,7 @@ class App extends React.Component {
           <Route path="/map" component={Map}/>
           <Route path="/login" component={Login}/>
           <Route path="/registration" component={Register}/>
+          
           </Switch>
           </Router>
         </div>
