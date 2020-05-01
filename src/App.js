@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import PrivateRoute from './components/login/PrivateRoute';
-import Home from "./components/login/Home";
+// import Home from "./components/login/Home";
 import Login from "./components/login/login";
 import Register  from "./components/login/register";
 import "./App.scss";
-
+import Map from "./components/Map";
 
 
 class App extends React.Component {
@@ -62,7 +62,7 @@ class App extends React.Component {
           />
           <Router>
           <Switch>
-          <PrivateRoute path="/home" component={Home}/>
+          <PrivateRoute path="/map" component={Map}/>
           <Route path="/login" component={Login}/>
           <Route path="/registration" component={Register}/>
           </Switch>
