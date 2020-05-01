@@ -1,0 +1,35 @@
+  
+.map {
+	margin-top: 20px;
+	border: 2px solid lightblue;
+	background: url("https://assetstorev1-prd-cdn.unity3d.com/key-image/a240f916-20bc-4e47-9048-98a8d1d92d53.webp");
+	border-radius: 10%;
+	width: 1000px;
+	height: 550px;
+	overflow: hidden;
+	.content {
+		color: black;
+	}
+}
+.buttons {
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin-top: 20px;
+	margin-left: 50px;
+	.btn {
+		width: 200px;
+	}
+}
+.menu {
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+	.mbtn {
+		width: 150px;
+		margin-top: 50px;
+	}
+}

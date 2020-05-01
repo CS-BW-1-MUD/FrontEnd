@@ -34,7 +34,7 @@ const Login = ({ values, errors, touched, status, ...props}) => {
                
             
             <div className="footer">
-            <button type="submit" className="btn">Login</button>
+            <button type="submit" link="https://wonderful-beaver-f6fbaf.netlify.app/" className="btn">Login</button>
             
             </div>
             </Form>
@@ -72,7 +72,7 @@ const FormikLogin = withFormik({
           };
 
         axios
-            .post("https://lambda-mud-test.herokuapp.com/api/login/", params)
+            .post("https://mud-game2.herokuapp.com/api/login/", params)
             .then(res => {
                 localStorage.setItem('token', res.data.token)
                 props.history.push(
@@ -86,6 +86,3 @@ const FormikLogin = withFormik({
 
 
 export default FormikLogin   
-
-
-
