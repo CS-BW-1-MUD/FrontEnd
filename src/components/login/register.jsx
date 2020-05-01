@@ -28,15 +28,10 @@ const Register = ({ values, errors, touched, status, ...props}) => {
                 />
                 {touched.username && errors.username && (<p className="errors">{errors.username}</p>)} 
                  <Field className="form-group field password" 
-               type="password" name="password1" placeholder="enter your password"
+               type="password" name="password" placeholder="enter your password"
                 />
-           
-                {touched.password1 && errors.password1 && (<p className="errors">{errors.password1}</p>)} 
-                <Field className="form-group field password" 
-               type="password" name="password2" placeholder="confirm your password"
-                />
-                
-                {touched.password2 && errors.password2 && (<p className="errors">{errors.password2}</p>)} 
+                <p className="text">*Password must be at least 6 characters.</p>
+                {touched.password && errors.password && (<p className="errors">{errors.password}</p>)} 
                 
             
             <div className="footer">
@@ -50,12 +45,11 @@ const Register = ({ values, errors, touched, status, ...props}) => {
         );
 };
 const FormikRegistration = withFormik({
-    mapPropsToValues({ username,  password1, password2, name}) {
+    mapPropsToValues({ username,  password, passwordVerify, name}) {
         return{
            
             username: username || "",
-            password1: password1 || "",
-            password2: password2 || "",
+            password: password || ""
         };
     },
 
@@ -63,14 +57,9 @@ const FormikRegistration = withFormik({
         username: yup
             .string()
             .required("Username is required"),
-        password1: yup
+        password: yup
             .string()
             .required("Password is required")
-            .min(6, "Password must be at least 6 characters.")
-            .max(20, "Password must not exceed 20 characters."),   
-        password2: yup
-            .string()
-            .required("Please confirm your password")
             .min(6, "Password must be at least 6 characters.")
             .max(20, "Password must not exceed 20 characters.")       
     }),
