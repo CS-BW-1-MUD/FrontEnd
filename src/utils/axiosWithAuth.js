@@ -5,7 +5,8 @@ export const axiosWithAuth = () => {
   return axios.create({
     baseURL: 'https://mud-game2.herokuapp.com/api/',
     headers: {
-      Authorization: `Token ${token} ` 
+      'Content-Type': 'application/json',
+      Authorization: token 
     }
   });
 };
