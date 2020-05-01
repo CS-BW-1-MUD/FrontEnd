@@ -62,7 +62,7 @@ class App extends React.Component {
           />
           <Router>
           <Switch>
-          <PrivateRoute path="/map" component={Map}/>
+          <Route path="/map" component={Map}/>
           <Route path="/login" component={Login}/>
           <Route path="/registration" component={Register}/>
           </Switch>

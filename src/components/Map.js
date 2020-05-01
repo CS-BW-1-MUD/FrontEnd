@@ -10,7 +10,7 @@ const Map = () => {
 
 	useEffect(() => {
 		async function fetchMapLayout() {
-			const getMap = await axios.get("https://mud-game2.herokuapp.com/api/adv/rooms");
+			const getMap = await axios.get("https://mud-game2.herokuapp.com/api/adv/rooms/");
 			setmap({ getMap });
 		}
 		fetchMapLayout();
@@ -18,7 +18,7 @@ const Map = () => {
 
 	async function goNorth() {
 		const nextRoom = await axios.post(
-			"https://mud-game2.herokuapp.com/api/adv/move",
+			"https://mud-game2.herokuapp.com/api/adv/move/",
 			{
 				direction: "n",
 			}
@@ -27,7 +27,7 @@ const Map = () => {
 	}
 	async function goSouth() {
 		const nextRoom = await axios.post(
-			"https://mud-game2.herokuapp.com/api/adv/move",
+			"https://mud-game2.herokuapp.com/api/adv/move/",
 			{
 				direction: "s",
 			}
@@ -36,7 +36,7 @@ const Map = () => {
 	}
 	async function goEast() {
 		const nextRoom = await axios.post(
-			"https://mud-game2.herokuapp.com/api/adv/move",
+			"https://mud-game2.herokuapp.com/api/adv/move/",
 			{
 				direction: "e",
 			}
@@ -45,7 +45,7 @@ const Map = () => {
 	}
 	async function goWest() {
 		const nextRoom = await axios.post(
-			"https://mud-game2.herokuapp.com/api/adv/move",
+			"https://mud-game2.herokuapp.com/api/adv/move/",
 			{
 				direction: "w",
 			}
@@ -53,7 +53,7 @@ const Map = () => {
 		setcurrentRoom(nextRoom);
 	}
 	async function init() {
-		const start = await axios.get("https://mud-game2.herokuapp.com/api/adv/init");
+		const start = await axios.get("https://mud-game2.herokuapp.com/api/adv/init/");
 		setcurrentRoom(start);
 	}
 
